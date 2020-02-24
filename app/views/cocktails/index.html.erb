@@ -1,0 +1,27 @@
+<div class="main">
+  <div class="container">
+    <div class="nav-bar">
+
+    </div>
+    <div class="cards-box">
+      <h1>The Cocktail Club</h1>
+      <div class="row row-cols-1 row-cols-md-3">
+        <% @cocktails.each do |cocktail| %>
+          <div class="col mb-4">
+            <div class="card">
+              <%= image_tag (cocktail.name + ".jpg"), alt: "alttext", class: "card-img-top" %>
+              <div class="card-body">
+                <h5 class="card-title"><%= cocktail.name %></h5>
+                <p class="card-text"><%= link_to "Display Recipe", cocktail_path(cocktail) %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= simple_form_for(@cocktail) do |f| %>
+    <%= f.input :name %>
+    <%= f.submit "Add Cocktail", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
